@@ -95,3 +95,16 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// returns process pid and system call return value
+uint64
+sys_trace(void)
+{
+	int call_num;
+	struct proc *p = myproc();
+	if(argint(0, &call_num) < 0){
+		return -1;
+	}
+	p -> trace = call_num;
+	return 0;
+}
