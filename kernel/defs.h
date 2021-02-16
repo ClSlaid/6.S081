@@ -59,10 +59,14 @@ void            ramdiskinit(void);
 void            ramdiskintr(void);
 void            ramdiskrw(struct buf*);
 
+// sysinfo.c
+int				sysinfo(unsigned long);
+
 // kalloc.c
 void*           kalloc(void);
 void            kfree(void *);
 void            kinit(void);
+unsigned long 	kavai(void);
 
 // log.c
 void            initlog(int, struct superblock*);
@@ -104,6 +108,7 @@ void            yield(void);
 int             either_copyout(int user_dst, uint64 dst, void *src, uint64 len);
 int             either_copyin(void *dst, int user_src, uint64 src, uint64 len);
 void            procdump(void);
+unsigned long	avaiproc(void);	// available proc
 
 // swtch.S
 void            swtch(struct context*, struct context*);
